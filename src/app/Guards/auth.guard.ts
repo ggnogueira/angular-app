@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
       this.authService.getToken() != null
         ? jwt_decode(jwtToken as string)
         : null;
-    const userRole = decodedToken != null ? decodedToken.Role : null;
+    const userRole = decodedToken != null ? decodedToken.role : null;
 
     if (!jwtToken || this.jwtHelper.isTokenExpired(jwtToken)) {
       // Check if the token is missing or expired

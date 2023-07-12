@@ -1,19 +1,19 @@
 import { Address } from "./address";
 
 export class User {
-    userId: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-    admin: boolean;
+    id: string;
+    first_name: string;
+    last_name: string;
+    username: string;
+    is_admin: boolean;
     addresses: Address[];
 
     constructor() {
-        this.userId = "";
-        this.firstname = "";
-        this.lastname = "";
-        this.email = "";
-        this.admin = false;
+        this.id = "";
+        this.first_name = "";
+        this.last_name = "";
+        this.username = "";
+        this.is_admin = false;
         this.addresses = [];
     }
 }

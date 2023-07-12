@@ -17,12 +17,12 @@
               <mat-label class="form-label" for="Email">
                 <i class="me-3"> <mat-icon> email</mat-icon></i> Email address
               </mat-label>
-              <input matInput type="email" id="email" placeholder="Enter a valid email address" formControlName="email"
-                [errorStateMatcher]="matcher" name="email" required />
-              <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+              <input matInput type="email" id="email" placeholder="Enter a valid email address" formControlName="username"
+                [errorStateMatcher]="matcher" name="username" required />
+              <mat-error *ngIf="username?.hasError('username') && !username?.hasError('required')">
                 Please enter a valid <strong>email</strong> address
               </mat-error>
-              <mat-error *ngIf="email?.hasError('required')">
+              <mat-error *ngIf="username?.hasError('required')">
                 Email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -57,7 +57,7 @@
             <!--Redirectio to register components -->
             <div class="text-center text-lg-start mt-4 pt-2">
               <p class="small mt-2 pt-1 mb-0">Don't have an account?
-                <a routerLink="/register" class="link-danger">Register</a>
+                <a routerLink="/SignUp" class="link-danger">Register</a>
               </p>
             </div>
   

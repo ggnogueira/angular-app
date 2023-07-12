@@ -10,19 +10,19 @@ import { User } from 'src/app/models/user';
 })
 export class UserComponent {
   //save userId in a varibale
-  userId: string = '';
+  id: string = '';
   userInfo: User = new User();
   constructor(
     private userService: UserService,
     private authService: AuthService
   ) {
-    this.userId = this.authService.getUserId() as string;
+    this.id = this.authService.getUserId() as string;
     this.refreshProfile();
   }
 
   //get User Info
   refreshProfile() {
-    this.userService.get(this.userId).subscribe((response: User) => {
+    this.userService.get(this.id).subscribe((response: User) => {
       this.userInfo = response;
     });
   }

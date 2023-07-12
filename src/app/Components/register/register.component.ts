@@ -28,6 +28,7 @@ export class RegisterComponent {
   //form group
   form: FormGroup = new FormGroup(
     {
+      /*
       firstname: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
@@ -36,11 +37,12 @@ export class RegisterComponent {
         Validators.required,
         Validators.minLength(4),
       ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      */
+      email: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        Validators.pattern('(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}'),
+        Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"),
       ]),
       cPassword: new FormControl('', [Validators.required]),
     },
@@ -79,11 +81,11 @@ export class RegisterComponent {
     this.isSubmited = true;
     if (!this.form.invalid) {
       const user = {
-        firstname: this.firstname?.value,
-        lastname: this.lastname?.value,
-        email: this.email?.value,
-        password: this.password?.value,
-        admin: false,
+        //firstname: this.firstname?.value,
+        //lastname: this.lastname?.value,
+        username: this.email?.value,
+        hashed_password: this.password?.value,
+        //admin: false,
       };
       console.log(user);
       this.userService.Create(user).subscribe(() => {

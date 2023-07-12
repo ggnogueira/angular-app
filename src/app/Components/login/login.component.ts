@@ -29,7 +29,7 @@ export class LoginComponent {
 
   //form validators
   form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -37,8 +37,8 @@ export class LoginComponent {
   });
 
   //get all Form Fields
-  get email() {
-    return this.form.get('email');
+  get username() {
+    return this.form.get('username');
   }
 
   get password() {
@@ -51,13 +51,14 @@ export class LoginComponent {
   // submit fntc
   onSubmit() {
     const LoginInfo = {
-      email: this.email?.value,
+      username: this.username?.value,
       password: this.password?.value,
     };
     if (this.form.valid) {
-      this.userService.signIn(LoginInfo).subscribe({
+      this.userService.signIn(LoginInfo.username, LoginInfo.password).subscribe({
         next: (data: any) => {
-          this.authService.saveToken(data.token);
+          console.log(data);
+          this.authService.saveToken(data.access_token);
           this.isLoginFailed = false;
           window.location.reload();
         },

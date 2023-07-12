@@ -20,6 +20,8 @@ export class AuthService {
   }
   public getUser():string | null{
     const jwtToken = this.getToken();
+    //console.log(jwtToken);
+    //console.log(jwt_decode(jwtToken as string));
     const decodedToken: any = this.getToken() != null ? jwt_decode(jwtToken as string) : null;
     return decodedToken != null ? decodedToken?.sub : null;
   }
@@ -31,7 +33,8 @@ export class AuthService {
   public getRole(){
     const jwtToken = this.getToken();
     const decodedToken: any = this.getToken() != null ? jwt_decode(jwtToken as string) : null;
-    return decodedToken != null ? decodedToken?.Role : null;
+    console.log(decodedToken.role);
+    return decodedToken != null ? decodedToken?.role : null;
   }
 
   signOut(): void {
